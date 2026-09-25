@@ -1,5 +1,7 @@
 # vedic-astrology
 
+[![tests](https://github.com/Santhosh17/astroJyothish/actions/workflows/tests.yml/badge.svg)](https://github.com/Santhosh17/astroJyothish/actions/workflows/tests.yml)
+
 A sidereal (Vedic) astrology computation engine built on the Swiss Ephemeris, packaged as a Claude skill. It can also be used on its own as a Python module or from the command line.
 
 The project exists because language models asked for a horoscope tend to recall planetary positions from training data instead of computing them, and those recalled positions are often wrong. The skill instructs Claude to compute every position with this engine, name the ayanamsa it used, check how sensitive the chart is to birth-time error, and verify the full classical condition of a yoga before naming it.
@@ -30,7 +32,7 @@ Shadbala, vedha tables, dasha systems other than Vimshottari, compatibility matc
 Tested with Python 3.12 and pyswisseph 2.10.
 
 ```bash
-git clone <your-repo-url> vedic-astrology
+git clone https://github.com/Santhosh17/astroJyothish.git vedic-astrology
 cd vedic-astrology
 python3 -m venv .venv && . .venv/bin/activate
 pip install -r requirements.txt
@@ -77,7 +79,7 @@ print(jy.dasha_at(jy.vimshottari(jd, pos["Moon"]["lon"]), jd))
 
 `SKILL.md` tells Claude how to gather and check birth data, which functions to call in which order, and which common errors to check for. `INTERPRETATION.md` covers how to write a reading, including how to frame questions about life outcomes. `REFERENCE.md` holds the technique tables.
 
-To install, zip the project folder (the zip must contain the `vedic-astrology/` folder with `SKILL.md` inside it) and upload it as a custom skill in Claude:
+The clone command above names the folder `vedic-astrology`, which matches the skill name in `SKILL.md`. To install, zip that folder (the zip must contain the `vedic-astrology/` folder with `SKILL.md` inside it) and upload it as a custom skill in Claude:
 
 ```bash
 cd ..
@@ -113,7 +115,13 @@ scripts/chart_svg.py     South and North Indian chart renderers
 scripts/fetch_ephemeris.sh
 tests/test_jyotish.py
 requirements.txt
+LICENSE
+.github/workflows/tests.yml
 ```
+
+## Licence
+
+AGPL-3.0, the same licence as pyswisseph and the Swiss Ephemeris it depends on. See `LICENSE`.
 
 ## Acknowledgements
 
